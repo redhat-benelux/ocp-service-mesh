@@ -1,0 +1,9 @@
+apiVersion: maistra.io/v1
+kind: ServiceMeshMember
+metadata:
+  name: default
+  namespace: ns2
+spec:
+  controlPlaneRef:
+    name: control-tenant-aa
+    namespace: control-tenant-aa

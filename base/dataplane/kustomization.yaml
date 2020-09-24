@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+
+resources:
+  - ns-istio-tenant-ns1.yaml
+#  - smm-istio-tenant-ns1.yaml
+  - ns-istio-tenant-ns2.yaml
+#  - smm-istio-tenant-ns2.yaml
+  - ns-istio-tenant-ns3.yaml
+#  - smm-istio-tenant-ns3.yaml
+  - ns-istio-tenant-ns4.yaml
+#  - smm-istio-tenant-ns4.yaml

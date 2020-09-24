@@ -1,0 +1,45 @@
+apiVersion: maistra.io/v1
+kind: ServiceMeshControlPlane
+metadata:
+  name: control-tenant-bb
+  namespace: control-tenant-bb
+spec:
+  version: v1.1
+  istio:
+    gateways:
+      istio-egressgateway:
+        autoscaleEnabled: false
+      istio-ingressgateway:
+        autoscaleEnabled: false
+        ior_enabled: false
+    mixer:
+      policy:
+        autoscaleEnabled: false
+      telemetry:
+        autoscaleEnabled: false
+    pilot:
+      autoscaleEnabled: false
+      traceSampling: 100
+    kiali:
+      enabled: true
+    grafana:
+      enabled: true
+    tracing:
+      enabled: true
+      jaeger:
+        template: all-in-one
+    global:
+#      disablePolicyChecks must be false for 3scale to work.
+      disablePolicyChecks: true
+      controlPlaneSecurityEnabled: true
+      mtls:
+        enabled: true
+      defaultResources:
+        limits:
+          cpu: 500m
+          memory: 4G
+        requests:
+          cpu: 100m
+          memory: 1G
+    threeScale:
+      enabled: false

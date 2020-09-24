@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ns1-deployment-sleep.yaml
+  - ns1-deployment-ruby.yaml
+  - ns1-istio-gateway.yaml
+#  - ns1-deployment-echo.yaml
+  - ns2-deployment-sleep.yaml
+  - ns2-deployment-ruby.yaml
+#  - ns2-istio-gateway.yaml
+#  - ns2-deployment-echo.yaml
+  - ns3-deployment-sleep.yaml
+  - ns3-deployment-ruby.yaml
+#  - ns3-deployment-echo.yaml
+  - ns4-deployment-sleep.yaml
+  - ns4-deployment-ruby.yaml
+#  - ns4-deployment-echo.yaml
+
+
+images:
+  - name: echoserver-image
+    newName: gcr.io/google_containers/echoserver
+    newTag: '1.4'
+  - name: sleep-image
+    newName: tutum/curl
+    newTag: 'latest'
+
+
+#  oc adm policy add-scc-to-user privileged -z default -n tutorial
