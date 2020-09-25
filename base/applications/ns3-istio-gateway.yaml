@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: ruby-ex-gateway
+  name: ruby-ex-gateway-bb
   namespace: ns3
 spec:
   selector:
@@ -12,18 +12,18 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - "*"
+        - '*'
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: ruby-ex
+  name: ruby-ex-bb
   namespace: ns3
 spec:
   hosts:
-    - "*"
+    - '*'
   gateways:
-    - ruby-ex-gateway
+    - ruby-ex-gateway-bb
   http:
     - match:
         - uri:

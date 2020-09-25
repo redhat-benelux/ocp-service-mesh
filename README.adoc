@@ -1,0 +1,38 @@
+
+= ocp-service-mesh
+
+WIP: multi-tenant and multi-project
+
+This is work in progress
+
+1) Please install the Red Hat based Service Mesh Operators
+
+2) Do NOT use the information found at istio.io but use only https://maistra.io/
+
+3) From istio.io at least https://istio.io/latest/docs/reference/config/networking/[traffic management] is usable
+
+
+9) still working on it
+
+
+Have a look at the Routes created in:
+
+ oc get routes -n control-tenant-bb
+
+ oc get routes -n control-tenant-aa
+
+In base/controlplane/smcp-istio-tenant-aa.yaml is 'ior_enabled: true'
+
+In base/applications/ns1-istio-gateway.yaml are the cluster external fqdn defined
+
+In base/controlplane/smcp-istio-tenant-bb.yaml is 'ior_enabled: false'
+
+In base/applications/ns3-istio-gateway.yaml is a wildcard used for the host.
+
+Then OpenShift will create a FQDN for you.
+
+
+
+
+
+
