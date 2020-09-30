@@ -1,0 +1,45 @@
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  name: ruby-ex
+  labels:
+    app: ruby-ex
+    app.kubernetes.io/component: ruby-ex
+    app.kubernetes.io/instance: ruby-ex
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'ruby-ex:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 1
+  failedBuildsHistoryLimit: 1
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'ruby:2.6'
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/sclorg/ruby-ex.git'
+  triggers:
+    - type: GitHub
+      github:
+        secret: eLlI95vpVWNx3oe1g3gc
+    - type: Generic
+      generic:
+        secret: oMDp9gaVhtqla6dQJ_QN
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange:
+        lastTriggeredImageID: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/ruby
+  runPolicy: Serial

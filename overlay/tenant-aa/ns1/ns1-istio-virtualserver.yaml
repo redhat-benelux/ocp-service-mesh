@@ -1,0 +1,19 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ruby-ex-aa
+  namespace: ns1
+spec:
+  hosts:
+    - '*'
+  gateways:
+    - ruby-ex-gateway-aa
+  http:
+    - name: basic-ruby-route
+      route:
+        - destination:
+            host: ruby-ex.ns1.svc.cluster.local
+            port:
+              number: 8080
+

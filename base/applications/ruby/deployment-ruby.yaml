@@ -1,0 +1,41 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ruby-ex
+  labels:
+    app: ruby-ex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: ruby-ex
+  template:
+    metadata:
+      labels:
+        deployment: ruby-ex
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      serviceAccountName: ruby-ex
+      containers:
+        - name: ruby-ex
+          image: ruby-ex-image
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: http
+          resources:
+            requests:
+              cpu: 3m
+              memory: 120Mi
+            limits:
+              cpu: 300m
+              memory: 300Mi
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 1
+  progressDeadlineSeconds: 600

@@ -9,7 +9,9 @@ This is work in progress
 
 2) Do NOT use the information found at istio.io but use only https://maistra.io/
 
-3) From istio.io at least https://istio.io/latest/docs/reference/config/networking/[traffic management] is usable
+3) https://docs.openshift.com/container-platform/4.5/service_mesh/servicemesh-release-notes.html
+
+4) From istio.io at least https://istio.io/latest/docs/reference/config/networking/[traffic management] is usable
 
 
 9) still working on it
@@ -21,18 +23,17 @@ Have a look at the Routes created in:
 
  oc get routes -n control-tenant-aa
 
-In base/controlplane/smcp-istio-tenant-aa.yaml is 'ior_enabled: true'
+In overlay/tenant-aa/smcp-istio-tenant-aa.yaml is 'ior_enabled: true'
 
-In base/applications/ns1-istio-gateway.yaml are the cluster external fqdn defined
+In overlay/tenant-aa/ns1/ns1-istio-gateway.yaml are the cluster external fqdn defined
 
-In base/controlplane/smcp-istio-tenant-bb.yaml is 'ior_enabled: false'
+In overlay/tenant-bb/smcp-istio-tenant-bb.yaml is 'ior_enabled: false'
 
-In base/applications/ns3-istio-gateway.yaml is a wildcard used for the host.
-
-Then OpenShift will create a FQDN for you.
+In overlay/tenant-bb/ns3/ns3-istio-gateway.yaml is a wildcard used for the host. Then OpenShift will create a FQDN for you.
 
 
+App in NS3 available : http://istio-ingressgateway-control-tenant-bb.apps.guid.it-speeltuin.eu/
 
-
+App in NS1 available : http://ruby.apps.guid.it-speeltuin.eu/
 
 

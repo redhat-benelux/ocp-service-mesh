@@ -3,5 +3,4 @@ kind: Kustomization
 
 
 resources:
-  - applications
-
+  - deployment-sleep.yaml

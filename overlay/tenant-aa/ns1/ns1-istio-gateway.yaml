@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ruby-ex-gateway-aa
+  namespace: ns1
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - ruby.apps.guid.it-speeltuin.eu
+        - www.ruby.apps.guid.it-speeltuin.eu

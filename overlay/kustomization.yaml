@@ -3,5 +3,8 @@ kind: Kustomization
 
 
 resources:
-  - applications
+  - tenant-aa
+  - tenant-bb
+
+
 

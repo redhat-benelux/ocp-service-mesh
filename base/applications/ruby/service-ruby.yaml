@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ruby-ex
+  namespace: ns1
+  labels:
+    deployment: ruby-ex
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    deployment: ruby-ex
