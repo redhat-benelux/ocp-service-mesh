@@ -37,3 +37,11 @@ App in NS3 available : http://istio-ingressgateway-control-tenant-bb.apps.guid.i
 App in NS1 available : http://ruby.apps.guid.it-speeltuin.eu/
 
 
+TODO
+
+* TLS / mTLS  configuration
+
+* multiply gateways that are configured with the same TLS certificate, see: https://istio.io/latest/docs/ops/common-problems/network-issues/#404-errors-occur-when-multiple-gateways-configured-with-same-tls-certificate
+
+* stability with TLS / mTLS
+
